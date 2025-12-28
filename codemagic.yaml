@@ -1,16 +1,13 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: Android Build (No Signing)
     max_build_duration: 120
-    environment:
-      android_signing:
-        - debug
-      vars:
-        PACKAGE_NAME: "com.example.app"
+
     scripts:
-      - name: Build APK using Android tools
+      - name: Create dummy APK
         script: |
           mkdir -p app/build/outputs/apk/debug
-          echo "APK PLACEHOLDER" > app/build/outputs/apk/debug/app-debug.apk
+          echo "TEMP APK" > app/build/outputs/apk/debug/app-debug.apk
+
     artifacts:
       - app/build/outputs/**/*.apk
